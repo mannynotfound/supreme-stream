@@ -3,8 +3,6 @@
   <img src="https://raw.githubusercontent.com/mannynotfound/supreme-stream/master/ss-logo.png" />
 </p>
 
-# Supreme Stream
-
 Utility library for handling multiple Twitter streams using various 
 
 ## Goals / Todos
