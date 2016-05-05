@@ -3,7 +3,7 @@
   <img src="https://raw.githubusercontent.com/mannynotfound/supreme-stream/master/ss-logo.png" />
 </p>
 
-Utility library for handling multiple Twitter streams using various 
+Utility library for handling multiple Twitter streams using various Twitter apps.
 
 ## Goals / Todos
 
