@@ -4,6 +4,7 @@ import streams from './streams'
 import accounts from './accounts'
 import jsonfile from 'jsonfile'
 import path from 'path'
+import mkdirp from 'mkdirp'
 
 var tweetCache = []
 var saving = false
@@ -27,7 +28,7 @@ function supremeCallback(err, data, cfg) {
     console.log(`${label} ${name} ${text}`)
     console.log('')
 
-    const output = path.resolve(__dirname, '/') + `mnt/data/${cfg.label.toLowerCase().replace(/ /g, '-')}/tweets.json`
+    const output = path.resolve(__dirname, '/') + `data/${cfg.label.toLowerCase().replace(/ /g, '-')}`
 
     tweetCache.push(data)
 
@@ -35,21 +36,28 @@ function supremeCallback(err, data, cfg) {
       saving = true
 
       try {
-        tweetCache = require(output).concat(tweetCache)
+        tweetCache = require(`${output}/tweets.json`).concat(tweetCache)
       } catch(e) {
         console.log('COULDNT REQUIRE TWEETS')
       }
 
-      jsonfile.writeFile(output, tweetCache, {spaces: 2}, (err) => {
-        if (err) {
-          console.log(err)
-        } else {
-          tweetCache.splice(0, 99)
+      mkdirp(output, (error) => {
+        if (error) {
+          return console.log('COULDNT MAKE TWEET FOLDER!')
         }
-        saving = false
-      })
-    }
 
+        jsonfile.writeFile(`${output}/tweets.json`, tweetCache, {spaces: 2}, (jsonError) => {
+          if (jsonError) {
+            console.log(jsonError)
+          } else {
+            tweetCache.splice(0, 99)
+          }
+
+          saving = false
+        })
+      });
+
+    }
   }
 }
 

@@ -5,6 +5,8 @@
 
 Utility library for handling multiple Twitter streams using various Twitter apps.
 
+work in progress not ready for consumption
+
 ## Goals / Todos
 
 * Simplify handling to a single config file that controls app actions
