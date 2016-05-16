@@ -10,7 +10,7 @@ class Stream {
   init() {
     console.log('INITING ', this.account.username, this.streamCfg)
     console.log('')
-    this.api = ImmortalTwitter.create(this.account.creds)
+    this.api = new ImmortalTwitter(this.account.creds)
     this.startStream()
   }
 
