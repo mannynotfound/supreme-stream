@@ -1,4 +1,4 @@
-import ImmortalTwitter from './immortal'
+import StreamChannels from './stream-channels'
 
 class Stream {
   constructor(streamCfg, account, cb) {
@@ -10,11 +10,6 @@ class Stream {
   init() {
     console.log('INITING ', this.account.username, this.streamCfg)
     console.log('')
-    this.api = ImmortalTwitter.create(this.account.creds)
-    this.startStream()
-  }
-
-  startStream() {
     const opts = {
       language: 'en',
     }
@@ -23,17 +18,17 @@ class Stream {
       opts.follow = this.streamCfg.follow.join(',')
     }
 
-    if (this.streamCfg.track) {
-      opts.track = this.streamCfg.track.join(',')
+    if (this.streamCfg.channels) {
+      opts.track = this.streamCfg.channels
     }
 
-    this.api.stream('statuses/filter', opts, this.handleStream.bind(this))
-  }
+    this.stream = new StreamChannels(this.account.creds, opts)
 
-  handleStream(stream) {
-    this.stream = stream
+    console.log('MADE STREAM CHANNEL')
+    console.log(this.stream.currentStream.on)
 
-    this.stream.on('data', (tweet) => {
+    this.stream.on('channels', (tweet) => {
+      console.log('GOT TWEET! ', tweet.$channels, tweet.$keywords)
       this.cb(null, tweet, this.streamCfg)
     })
   }

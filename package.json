@@ -4,10 +4,11 @@
   "description": "Utility library for managing multiple Twitter streams.",
   "main": "index.js",
   "scripts": {
+    "build": "npm run build:stream && npm run build:app",
     "build:app": "babel --loose all ./example/ -d ./dist --copy-files",
     "build:stream": "babel --loose all ./src/ -d ./lib",
-    "start": "npm run build:stream && npm run build:app && npm run start:forever",
-    "start:forever": "forever start -c node --max-executable-size=96 --max-old-space-size=128 --max-semi-space-size=1 dist/app.js",
+    "start": "npm run build && node --max-executable-size=96 --max-old-space-size=128 --max-semi-space-size=1 dist/app.js",
+    "start:forever": "npm run build && forever start -c node --max-executable-size=96 --max-old-space-size=128 --max-semi-space-size=1 dist/app.js",
     "prepublish": "npm run build:stream"
   },
   "repository": {

@@ -10,15 +10,17 @@
       "21845792",
       "189470083"
     ],
-    "track": [
-      "yeezy",
-      "the life of pablo",
-      "tlop",
-      "pastelle",
-      "utralight beam",
-      "ultra light beam",
-      "turbo grafx 16"
-    ]
+    "channels": {
+      "kanye general": [
+        "yeezy",
+        "the life of pablo",
+        "tlop",
+        "pastelle",
+        "utralight beam",
+        "ultra light beam",
+        "turbo grafx 16"
+      ]
+    }
   },
   {
     "label": "Beyhive",
@@ -29,15 +31,17 @@
       "48725618",
       "1110519913"
     ],
-    "track": [
-      "beyonce",
-      "lemonade",
-      "bey",
-      "beyhive",
-      "beyonce + sorry",
-      "jay z",
-      "ivy park"
-    ]
+    "channels": {
+      "beyhive central": [
+        "beyonce",
+        "lemonade",
+        "bey",
+        "beyhive",
+        "beyonce + sorry",
+        "jay z",
+        "ivy park"
+      ]
+    }
   },
   {
     "label": "Nickelback",
@@ -48,9 +52,11 @@
       "1477348298",
       "2317083680"
     ],
-    "track": [
-      "nickelback",
-      "nickel back"
-    ]
+    "channels": {
+       "lmao": [
+        "nickelback",
+        "nickel back"
+      ]
+    }
   }
 ]
