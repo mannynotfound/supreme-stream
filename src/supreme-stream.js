@@ -1,5 +1,4 @@
 import Stream from './stream'
-import {sample, without, cloneDeep} from 'lodash'
 
 class SupremeStream {
   constructor(streams, accounts, callback) {
@@ -9,15 +8,15 @@ class SupremeStream {
   }
 
   startAll() {
-    let available = cloneDeep(this.accounts)
+    let available = JSON.parse(JSON.stringify(this.accounts))
 
     this.streams.forEach((stream) => {
       if (!available.length) {
         return console.warn('NO MORE CREDENTIALS TO GET')
       }
 
-      const account = sample(available)
-      available = without(available, account)
+      const rand = Math.floor(Math.random() * available.length)
+      const account = available.splice(rand, 1)[0]
 
       new Stream(stream, account, this.cb).init()
     })

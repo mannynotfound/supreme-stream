@@ -1,5 +1,4 @@
 import 'colors'
-import {assign} from 'lodash'
 import streams from './streams'
 import accounts from './accounts'
 import jsonfile from 'jsonfile'
@@ -10,7 +9,7 @@ var tweetCache = []
 var saving = false
 
 if (process.env.SILENT) {
-  console.log = () => {}
+  console.log = Function.prototype
 }
 
 function supremeCallback(err, data, cfg) {

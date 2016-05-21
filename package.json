@@ -23,10 +23,6 @@
   "homepage": "https://github.com/mannynotfound/supreme-stream#readme",
   "dependencies": {
     "babel-preset-nodejs-lts": "^1.2.1",
-    "colors": "^1.1.2",
-    "jsonfile": "^2.3.1",
-    "lodash": "^4.11.2",
-    "mkdirp": "^0.5.1",
     "moment": "^2.11.1",
     "twitter": "^1.2.5"
   },
@@ -36,6 +32,10 @@
     ]
   },
   "devDependencies": {
+    "colors": "^1.1.2",
+    "mkdirp": "^0.5.1",
+    "jsonfile": "^2.3.1",
+    "lodash": "^4.11.2",
     "babel-cli": "^6.5.1"
   }
 }
