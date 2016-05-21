@@ -3,8 +3,6 @@
   <img src="https://raw.githubusercontent.com/mannynotfound/supreme-stream/master/ss-logo.png" />
 </p>
 
-Utility library for handling multiple Twitter streams using various Twitter apps.
-
 # Inspiration
 
 Supreme Stream takes the best features of other node based Twitter streaming libraries and appropriates them into a fire must have jawn.
@@ -18,9 +16,9 @@ want with the data, see the `example` folder for an example of this.
 * Stream channels adapted from [twitter-stream-channels](https://github.com/topheman/twitter-stream-channels)
 * Auto-reconnect immortal stream adapted from [immortal-ntwitter](https://github.com/horixon/immortal-ntwitter)
 
-_work in progress not really ready for consumption_
-
 # Usage
+
+_work in progress not really ready for consumption_
 
 SupremeStream takes 3 arguments, an array of account objects with info + credentials, an array of stream objects to track, and a callback to send data to.
 
@@ -29,8 +27,8 @@ SupremeStream takes 3 arguments, an array of account objects with info + credent
 ```js
 [
   {
-    "fullname": "BarbaraGreen",
-    "username": "eduardkuztxwa1",
+    "fullname": "My Name",
+    "username": "myaccount",
     "creds": {
       "consumer_key": "XXX",
       "consumer_secret": "XXX",
@@ -49,8 +47,8 @@ SupremeStream takes 3 arguments, an array of account objects with info + credent
   {
     "label": "Kanye West Universe",
     "follow": [
-      "169686021",
-      "169686021",
+      "169686021", // kanye
+      "25365536", // kim
       // ...
     ],
     "channels": {
@@ -78,4 +76,4 @@ Calls back with `(err, data, cfg)`
 ## Todos
 
 * Time scheduling 
-* Load balancing across APIs if more streams than available APIs are provided
+* Rate Limit / Load balancing across APIs
