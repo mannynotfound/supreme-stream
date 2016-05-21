@@ -1,9 +1,12 @@
+/* Based off an adapted version of twitter-stream-channels
+    https://github.com/topheman/twitter-stream-channels/blob/master/lib/StreamChannels.js */
+
 function regExpEscape(s) {
   return String(s).replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1').
       replace(/\x08/g, '\\x08')
 }
 
-export default {
+const helpers = {
   checkStreamChannelsOptions(options) {
     if (typeof options === 'undefined') {
       throw new Error('new StreamChannels(options) - options parameter missing')
@@ -147,3 +150,5 @@ export default {
     return helpers.emitPosprocessedTweet(tweet, streamChannels)
   }
 }
+
+export default helpers

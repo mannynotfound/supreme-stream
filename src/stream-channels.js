@@ -15,15 +15,13 @@ const defaultEventsToTransmit = [
 ]
 
 function addEvents(twitterStream, streamChannels) {
-  console.log(twitterStream)
-
   defaultEventsToTransmit.forEach((eventName) => {
     twitterStream.on(eventName, (msg) => {
       streamChannels.emit(eventName, msg)
     })
   })
 
-  twitterStream.on('tweet', (msg) => {
+  twitterStream.on('data', (msg) => {
     helpers.onTweetEvent(msg, streamChannels)
   })
 
@@ -47,14 +45,12 @@ class StreamChannels {
     helpers.preprocessKeywords(options, this)
 
     this.options = options
-    this.client = ImmortalTwitter.create(creds)
+    this.client = new ImmortalTwitter(creds)
     EventEmitter.call(this)
 
     this.client.stream('statuses/filter', this._getOptionsToPassToApiClient(options), (_stream) => {
-      console.log('GOT STREAM')
-      console.log(_stream)
       this.currentStream = _stream
-      return addEvents(this.currentStream, this)
+      addEvents(this.currentStream, this)
     })
   }
 
@@ -68,7 +64,8 @@ class StreamChannels {
         }
       }
     }
-    result.track = this.trackedKeywords
+
+    result.track = this.trackedKeywords.join(',')
     return result
   }
 }
