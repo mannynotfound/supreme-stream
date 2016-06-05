@@ -8,8 +8,6 @@ class Stream {
   }
 
   init() {
-    console.log('INITING ', this.account.username, this.streamCfg)
-    console.log('')
     const opts = {
       language: 'en',
     }
@@ -24,11 +22,7 @@ class Stream {
 
     this.stream = new StreamChannels(this.account.creds, opts)
 
-    console.log('MADE STREAM CHANNEL')
-    console.log(this.stream.currentStream.on)
-
     this.stream.on('channels', (tweet) => {
-      console.log('GOT TWEET! ', tweet.$channels, tweet.$keywords)
       this.cb(null, tweet, this.streamCfg)
     })
   }
