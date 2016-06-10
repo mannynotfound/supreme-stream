@@ -20,7 +20,7 @@ class SupremeStream {
       const account = available.splice(rand, 1)[0]
 
       const streamClient = new Stream(stream, account, this.cb)
-      streamClient.init();
+      streamClient.init()
       this.streamClients.push(streamClient)
     })
   }
