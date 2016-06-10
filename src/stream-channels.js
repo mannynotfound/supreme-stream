@@ -54,6 +54,10 @@ class StreamChannels {
     })
   }
 
+  getClient() {
+    return this.client;
+  }
+
   _getOptionsToPassToApiClient(options) {
     const result = {}
     const dontHandle = ['track', 'enableChannelsEvents', 'enableRootChannelsEvent', 'enableKeywordsEvents']

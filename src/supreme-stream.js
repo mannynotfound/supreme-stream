@@ -9,6 +9,7 @@ class SupremeStream {
 
   startAll() {
     let available = JSON.parse(JSON.stringify(this.accounts))
+    this.streamClients = []
 
     this.streams.forEach((stream) => {
       if (!available.length) {
@@ -18,8 +19,14 @@ class SupremeStream {
       const rand = Math.floor(Math.random() * available.length)
       const account = available.splice(rand, 1)[0]
 
-      new Stream(stream, account, this.cb).init()
+      const streamClient = new Stream(stream, account, this.cb)
+      streamClient.init();
+      this.streamClients.push(streamClient)
     })
+  }
+
+  getClients() {
+    return this.streamClients.map((s) => s.getClient())
   }
 }
 

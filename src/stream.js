@@ -26,6 +26,10 @@ class Stream {
       this.cb(null, tweet, this.streamCfg)
     })
   }
+
+  getClient() {
+    return this.stream.getClient()
+  }
 }
 
 export default Stream
