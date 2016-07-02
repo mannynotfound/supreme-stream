@@ -79,6 +79,8 @@ const helpers = {
     let keywordsFound = []
     const lowerCasedSearch = []
 
+    if (!tweet.text) tweet.text = ''
+
     //prepare the lowerCased strings to full text search in the tweet object
     lowerCasedSearch.push(tweet.text.toLowerCase())
     if (tweet.user && tweet.user.screen_name) {
